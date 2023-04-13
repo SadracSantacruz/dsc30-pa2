@@ -4,27 +4,30 @@
  */
 
 import java.util.NoSuchElementException;
-/* Hello i am also here*/
 /**
  * Implements a circular queue using an array.
  *
- * @author TODO
- * @since TODO
+ * @author Tianqi Zhang & Sadrac Santacruz Ibarra
+ * @since 4/12/2023
  */
 
 public class CharQueue {
-    /* instance variables, feel free to add more if you need */
     private char[] circularArray;
     private int length;
     private int front;
     private int rear;
 
     public CharQueue() {
-        // TODO
+        this(5);
     }
 
     public CharQueue(int capacity) {
-        // TODO
+        this.length = 0;
+        this.front = 0;
+        this.rear = 0;
+
+        if(capacity < 1) throw new IllegalArgumentException();
+        circularArray = new char[capacity];
     }
 
     public boolean isEmpty() {
