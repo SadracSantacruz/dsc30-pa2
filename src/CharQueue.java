@@ -6,7 +6,7 @@
 import java.util.NoSuchElementException;
 
 /**
- * TODO
+ * Implements a circular queue using an array.
  *
  * @author TODO
  * @since TODO
