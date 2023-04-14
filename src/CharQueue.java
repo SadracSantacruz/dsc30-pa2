@@ -17,44 +17,57 @@ public class CharQueue {
     private int length;
     private int front;
     private int rear;
+    private int capacity;
 
     public CharQueue() {
         this(5);
-
     }
 
 
     public CharQueue(int capacity) {
+        /* Constructor that initiates that the previously allocated variables to the needed
+        * variables. */
+
+        if(capacity < 1) throw new IllegalArgumentException();
+
         this.length = 0;
         this.front = 0;
         this.rear = 0;
+        /* Created a new variable called capacity to keep track of how big the array
+        * was supposed to be. This variable will be used in the function(s) clear. */
+        this.capacity = capacity;
 
-        if(capacity < 1) throw new IllegalArgumentException();
         circularArray = new char[capacity];
 
     }
 
     public boolean isEmpty() {
-        // TODO
-        return false;
+        /* Checking if the Queue is Empty */
+        return this.length == 0;
     }
 
     public int size() {
-        // TODO
-        return 0;
+        /* Returning the size of the Queue */
+        return this.length;
     }
 
     public void clear() {
-        // TODO
+
+        /* Resetting all the variables to be 0, and re-initiating the circular to be empty */
+        this.front = 0;
+        this.rear = 0;
+        this.length = 0;
+        this.circularArray = new char[this.capacity];
+
     }
 
     public void enqueue(char elem) {
-        // TODO
+        this.circularArray[this.front] = elem;
+        this.rear++;
     }
 
     public char peek() {
-        // TODO
-        return 0;
+        return this.circularArray[circularArray.length - 1];
     }
 
     public char dequeue() {
