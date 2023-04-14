@@ -17,7 +17,7 @@ public class CharQueue {
     private int length;
     private int front;
     private int rear;
-    private int capacity;
+    private final int capacity;
 
     public CharQueue() {
         this(5);
@@ -62,16 +62,25 @@ public class CharQueue {
     }
 
     public void enqueue(char elem) {
-        this.circularArray[this.front] = elem;
-        this.rear++;
+        /* If the Queue is not full then enqueue an element at the rear index and increase
+        * rear. */
+        if((rear + 1) % capacity == front) throw new IllegalStateException("Queue is full");
+        circularArray[rear] = elem;
+        rear = (rear + 1) % capacity;
     }
 
     public char peek() {
+        if (this.isEmpty()) throw new NoSuchElementException();
         return this.circularArray[circularArray.length - 1];
     }
 
     public char dequeue() {
-        // TODO
-        return 0;
+        if (this.isEmpty()) throw new NoSuchElementException();
+
+        char currentElem = circularArray[this.front];
+        // circularArray[front] = "removed";
+        this.front = (this.front + 1) % capacity;
+        length--;
+        return currentElem;
     }
 }
