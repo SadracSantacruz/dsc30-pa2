@@ -112,7 +112,7 @@ public class CharQueue {
 
     public char peek() {
         if (this.isEmpty()) throw new NoSuchElementException();
-        return this.circularArray[circularArray.length - 1];
+        return this.circularArray[this.front];
     }
 
     public char dequeue() {
