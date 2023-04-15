@@ -53,15 +53,21 @@ class CharQueueTest {
     }
     @org.junit.jupiter.api.Test
     void enqueueTest() {
-        testQue.clear();
-        testQue.enqueue('H');
-        assertEquals('H', testQue.peek());
-
-        testQue.enqueue('I');
-        assertEquals('H',testQue.peek());
-
-        testQue.dequeue();
-        assertEquals('I', testQue.peek());
+        testQue.enqueue('a');
+        testQue.enqueue('b');
+        testQue.enqueue('c');
+        assertEquals(3, testQue.size());
+        assertFalse(testQue.isEmpty());
+        assertThrows(IllegalStateException.class, () -> testQue.enqueue('d'));
+        assertEquals('a', testQue.dequeue());
+        assertEquals(2, testQue.size());
+        testQue.enqueue('d');
+        assertEquals(3, testQue.size());
+        assertEquals('b', testQue.dequeue());
+        assertEquals('c', testQue.dequeue());
+        assertEquals('d', testQue.dequeue());
+        assertTrue(testQue.isEmpty());
+        assertThrows(NoSuchElementException.class, () -> testQue.dequeue());
     }
 
     @org.junit.jupiter.api.Test

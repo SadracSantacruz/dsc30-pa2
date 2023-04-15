@@ -65,6 +65,27 @@ public class CharQueue {
         /* If the Queue is not full then enqueue an element at the rear index and increase
         * rear. */
 
+        //if the queue is full, expand queue to enqueue new element
+        /*if((this.rear + 1) % this.capacity == this.front){
+            char[] temp = new char[this.capacity + 1];
+            int j = 0;
+            while(this.length > 0){
+                temp[j] = dequeue();
+                j++;
+            }
+            temp[j + 1] = elem;
+            this.circularArray = temp;
+            this.front = 0;
+            this.rear = temp.length - 1;
+            this.capacity = temp.length;
+            this.length = this.capacity;
+        }
+        //else, enqueue item
+        else {
+            circularArray[rear] = elem;
+            rear = (rear + 1) % capacity;
+        }*/
+
         // if the queue is full, expand queue to enqueue new element
         if ((this.rear + 1) % this.capacity == this.front) {
             int newCapacity = this.capacity + 1;
