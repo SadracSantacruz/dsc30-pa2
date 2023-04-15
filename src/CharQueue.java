@@ -48,6 +48,7 @@ public class CharQueue {
 
     public int size() {
         /* Returning the size of the Queue */
+        System.out.println(this.length);
         return this.length;
     }
 
@@ -66,30 +67,52 @@ public class CharQueue {
         * rear. */
 
         //if the queue is full, expand queue to enqueue new element
-        if((rear + 1) % capacity == front){
-            char[] temp = new char[capacity + 1];
+        /*if((this.rear + 1) % this.capacity == this.front){
+            char[] temp = new char[this.capacity + 1];
             int j = 0;
-            while(length > 0){
+            while(this.length > 0){
                 temp[j] = dequeue();
                 j++;
             }
             temp[j + 1] = elem;
-            circularArray = temp;
-            front = 0;
-            rear = temp.length - 1;
-            capacity = temp.length;
-            length = capacity;
+            this.circularArray = temp;
+            this.front = 0;
+            this.rear = temp.length - 1;
+            this.capacity = temp.length;
+            this.length = this.capacity;
         }
         //else, enqueue item
         else {
             circularArray[rear] = elem;
             rear = (rear + 1) % capacity;
+        }*/
+
+        // if the queue is full, expand queue to enqueue new element
+        if ((this.rear + 1) % this.capacity == this.front) {
+            int newCapacity = this.capacity + 1;
+            char[] temp = new char[newCapacity];
+
+            int i = 0;
+            while (!isEmpty()) {
+                temp[i] = dequeue();
+                i++;
+            }
+
+            this.circularArray = temp;
+            this.front = 0;
+            this.rear = this.length;
+            this.capacity = newCapacity;
         }
+
+        // enqueue item
+        this.circularArray[rear] = elem;
+        this.rear = (this.rear + 1) % this.capacity;
+        this.length++;
     }
 
     public char peek() {
         if (this.isEmpty()) throw new NoSuchElementException();
-        return this.circularArray[circularArray.length - 1];
+        return this.circularArray[this.front];
     }
 
     public char dequeue() {
