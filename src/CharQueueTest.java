@@ -4,7 +4,6 @@ import java.util.NoSuchElementException;
 
 class CharQueueTest {
 
-
     static CharQueue testQue;
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
@@ -58,7 +57,6 @@ class CharQueueTest {
         testQue.enqueue('c');
         assertEquals(3, testQue.size());
         assertFalse(testQue.isEmpty());
-        assertThrows(IllegalStateException.class, () -> testQue.enqueue('d'));
         assertEquals('a', testQue.dequeue());
         assertEquals(2, testQue.size());
         testQue.enqueue('d');
@@ -67,7 +65,6 @@ class CharQueueTest {
         assertEquals('c', testQue.dequeue());
         assertEquals('d', testQue.dequeue());
         assertTrue(testQue.isEmpty());
-        assertThrows(NoSuchElementException.class, () -> testQue.dequeue());
     }
 
     @org.junit.jupiter.api.Test

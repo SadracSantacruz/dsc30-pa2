@@ -48,6 +48,7 @@ public class CharQueue {
 
     public int size() {
         /* Returning the size of the Queue */
+        System.out.println(this.length);
         return this.length;
     }
 
