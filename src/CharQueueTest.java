@@ -65,6 +65,17 @@ class CharQueueTest {
         assertEquals('c', testQue.dequeue());
         assertEquals('d', testQue.dequeue());
         assertTrue(testQue.isEmpty());
+
+        testQue = new CharQueue(1);
+        testQue.enqueue('x');
+        testQue.enqueue('x');
+        assertFalse(testQue.isEmpty());
+        assertEquals(2, testQue.size());
+        assertEquals('x', testQue.peek());
+
+        for(int j = 0; j < 2; j++){
+            assertEquals('x', testQue.dequeue());
+        }
     }
 
     @org.junit.jupiter.api.Test
@@ -83,6 +94,18 @@ class CharQueueTest {
     }
 
     @org.junit.jupiter.api.Test
-    void dequeue() {
+    void dequeueTest() {
+        testQue.clear();
+        testQue.enqueue('H');
+        testQue.enqueue('I');
+        testQue.dequeue();
+        assertEquals('I', testQue.peek());
+        testQue.dequeue();
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+            char error = testQue.peek();
+        });
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+            char error = testQue.dequeue();
+        });
     }
 }
