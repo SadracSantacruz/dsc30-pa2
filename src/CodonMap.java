@@ -70,43 +70,4 @@ class CodonMap{
     codonTable.put("GGG", 'G');
     return codonTable.get(codon);
 }
-    public CharQueue transcribeDNA(String dna){
-        int length = dna.length();
-        if (length % 3 != 0) throw new IllegalArgumentException();
-        CharQueue dnaQue = new CharQueue(length);
-        while (dna.length() != 0){
-//            System.out.println("firstchar: "+ dna.charAt(0));
-            if (dna.charAt(0) == 'T') dnaQue.enqueue('U');
-            else dnaQue.enqueue(dna.charAt(0));
-            dna = dna.substring(1);
-//            System.out.println("dna: "+dna);
-//            System.out.println(dnaQue.peek());
-        }
-        return dnaQue;
-    }
-
-    public CharQueue translateRNA(CharQueue rna){
-        CharQueue protein = new CharQueue();
-        StringBuilder codon = new StringBuilder();
-        String startCodon = "AUG";
-        while (rna.size() >= 3 & !codon.toString().equalsIgnoreCase(startCodon))
-        {
-            codon = new StringBuilder();
-            for (int i = 0; i < 3; i++) {
-                codon.append(rna.dequeue());
-            }
-        }
-        if (codon.toString().equalsIgnoreCase(startCodon)) protein.enqueue('M');
-        while(rna.size() >= 3){
-
-            codon = new StringBuilder();
-            for(int i = 0; i < 3; i++){
-                codon.append(rna.dequeue());
-            }
-            char acid = getAminoAcid(codon.toString());
-            protein.enqueue(acid);
-            if (acid == '*') break;
-        }
-        return protein;
-    }
 }

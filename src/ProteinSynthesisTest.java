@@ -2,18 +2,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.NoSuchElementException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class CodonMapTest {
+class ProteinSynthesisTest {
 
-    static CodonMap testCodon;
+    static ProteinSynthesis testCodon;
     @BeforeEach
     void setUp(){
-        testCodon = new CodonMap();
+        testCodon = new ProteinSynthesis();
     }
-
 
     @Test
     void transcribeDNATest() {
