@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.util.NoSuchElementException;
 
 class CharQueueTest {
@@ -14,6 +16,14 @@ class CharQueueTest {
     void tearDown() {
     }
 
+    @Test
+    void charQueueTest(){
+        assertEquals(0, testQue.size());
+        assertTrue(testQue.isEmpty());
+        testQue = new CharQueue(20);
+        assertEquals(0, testQue.size());
+        assertTrue(testQue.isEmpty());
+    }
     @org.junit.jupiter.api.Test
     void isEmptyTest() {
         testQue.clear();

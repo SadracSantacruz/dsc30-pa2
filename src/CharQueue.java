@@ -78,8 +78,7 @@ public class CharQueue {
     /**
      * If the Queue is not full then enqueue an element at the rear index and increase
      * rear, if the queue is full, expand queue to enqueue new element. Else, enqueue the item.
-     * @param elem
-     * @return
+     * @param elem the element to enqueue
      */
     public void enqueue(char elem) {
         if (this.length == this.capacity) {
