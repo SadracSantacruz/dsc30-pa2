@@ -7,15 +7,18 @@ import java.util.NoSuchElementException;
 class CharQueueTest {
 
     static CharQueue testQue;
+
+    /**
+     * Sets up a new CharQueue object to use in tests
+     */
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         testQue = new CharQueue();
     }
 
-    @org.junit.jupiter.api.AfterEach
-    void tearDown() {
-    }
-
+    /**
+     * tests the contructors
+     */
     @Test
     void charQueueTest(){
         assertEquals(0, testQue.size());
@@ -24,6 +27,10 @@ class CharQueueTest {
         assertEquals(0, testQue.size());
         assertTrue(testQue.isEmpty());
     }
+
+    /**
+     * tests isEmpty
+     */
     @org.junit.jupiter.api.Test
     void isEmptyTest() {
         testQue.clear();
@@ -34,6 +41,9 @@ class CharQueueTest {
         assertTrue(testQue.isEmpty());
     }
 
+    /**
+     * tests size
+     */
     @org.junit.jupiter.api.Test
     void sizeTest() {
         testQue.clear();
@@ -47,6 +57,9 @@ class CharQueueTest {
         assertEquals(1, testQue.size());
     }
 
+    /**
+     * tests clear
+     */
     @org.junit.jupiter.api.Test
     void clearTest() {
         testQue.clear();
@@ -60,6 +73,10 @@ class CharQueueTest {
         testQue.clear();
         assertEquals(0, testQue.size());
     }
+
+    /**
+     * tests enqueue
+     */
     @org.junit.jupiter.api.Test
     void enqueueTest() {
         testQue.enqueue('a');
@@ -88,6 +105,9 @@ class CharQueueTest {
         }
     }
 
+    /**
+     * tests peek
+     */
     @org.junit.jupiter.api.Test
     void peekTest() {
         testQue.clear();
@@ -103,6 +123,9 @@ class CharQueueTest {
 
     }
 
+    /**
+     * tests dequeue
+     */
     @org.junit.jupiter.api.Test
     void dequeueTest() {
         testQue.clear();
