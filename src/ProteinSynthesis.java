@@ -7,7 +7,7 @@
  * The ProteinSynthesis class has functionality to transcribe a string of DNA
  * into RNA and then translate RNA stored in a CharQueue into a protein.
  *
- * @author Tianqi Zhang, Sadrac SAntacruz
+ * @author Tianqi Zhang, Sadrac Santacruz
  * @since 4/15/2023
  */
 class ProteinSynthesis {
@@ -21,12 +21,9 @@ class ProteinSynthesis {
         if (length % 3 != 0) throw new IllegalArgumentException();
         CharQueue dnaQue = new CharQueue(length);
         while (dna.length() != 0){
-//            System.out.println("firstchar: "+ dna.charAt(0));
             if (dna.charAt(0) == 'T') dnaQue.enqueue('U');
             else dnaQue.enqueue(dna.charAt(0));
             dna = dna.substring(1);
-//            System.out.println("dna: "+dna);
-//            System.out.println(dnaQue.peek());
         }
         return dnaQue;
     }

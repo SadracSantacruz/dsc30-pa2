@@ -19,39 +19,52 @@ public class CharQueue {
     private int rear;
     private int capacity;
 
+
+    /**
+     * Calls the CharQueue(int capacity) class by using the this() keyword.
+     */
     public CharQueue() {
         this(5);
     }
 
 
+    /**
+     * Constructor that initiates that the previously allocated variables to the needed
+     * variables.
+     * @param capacity an integer containing how big is the Queue going to be.
+     */
     public CharQueue(int capacity) {
-        /* Constructor that initiates that the previously allocated variables to the needed
-        * variables. */
-
         if(capacity < 1) throw new IllegalArgumentException();
 
         this.length = 0;
         this.front = 0;
         this.rear = 0;
-        /* Created a new variable called capacity to keep track of how big the array
-        * was supposed to be. This variable will be used in the function(s) clear. */
         this.capacity = capacity;
 
         circularArray = new char[capacity];
 
     }
 
+    /**
+     * Checks if the Queue is empty or not.
+     * @return True or False
+     */
     public boolean isEmpty() {
         /* Checking if the Queue is Empty */
         return this.length == 0;
     }
 
+    /**
+     * @return size of the Queue
+     */
     public int size() {
-        /* Returning the size of the Queue */
-        //System.out.println(this.length);
         return this.length;
     }
 
+    /**
+     * This function resets the circular array to be empty. And resets all the other variables
+     * to be 0.
+     */
     public void clear() {
 
         /* Resetting all the variables to be 0, and re-initiating the circular to be empty */
@@ -62,10 +75,13 @@ public class CharQueue {
 
     }
 
+    /**
+     * If the Queue is not full then enqueue an element at the rear index and increase
+     * rear, if the queue is full, expand queue to enqueue new element. Else, enqueue the item.
+     * @param elem
+     * @return
+     */
     public void enqueue(char elem) {
-        /* If the Queue is not full then enqueue an element at the rear index and increase
-        * rear. */
-        // if the queue is full, expand queue to enqueue new element
         if (this.length == this.capacity) {
             int newCapacity = this.capacity + 1;
             char[] temp = new char[newCapacity];
@@ -76,7 +92,6 @@ public class CharQueue {
                 i++;
             }
             temp[i] = elem;
-            //for(char c: temp) System.out.println(c);
 
             this.circularArray = temp;
             this.front = 0;
@@ -84,7 +99,6 @@ public class CharQueue {
             this.capacity = temp.length;
             this.length = temp.length;
         }
-        // else, enqueue item
         else {
             this.circularArray[rear] = elem;
             this.rear = (this.rear + 1) % this.capacity;
@@ -92,11 +106,20 @@ public class CharQueue {
         }
     }
 
+    /**
+     * Checks for what is the peek of the queue
+     * @return an integer representing the peek of the queue
+     */
     public char peek() {
         if (this.isEmpty()) throw new NoSuchElementException();
         return this.circularArray[this.front];
     }
 
+
+    /**
+     * Removes the element at the rear of the queue
+     * @return the element that was removed
+     */
     public char dequeue() {
         if (this.isEmpty()) throw new NoSuchElementException();
 
